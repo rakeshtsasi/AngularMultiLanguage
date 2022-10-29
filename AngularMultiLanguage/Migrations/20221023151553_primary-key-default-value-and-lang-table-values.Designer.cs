@@ -4,6 +4,7 @@ using AngularMultiLanguage.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AngularMultiLanguage.Migrations
 {
     [DbContext(typeof(MutltiLanDBContext))]
-    partial class MutltiLanDBContextModelSnapshot : ModelSnapshot
+    [Migration("20221023151553_primary-key-default-value-and-lang-table-values")]
+    partial class primarykeydefaultvalueandlangtablevalues
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -65,9 +67,7 @@ namespace AngularMultiLanguage.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedAt")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("getutcdate()");
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("ModifiedAt")
                         .HasColumnType("datetime2");
@@ -93,7 +93,7 @@ namespace AngularMultiLanguage.Migrations
                         .HasColumnType("varchar(2)");
 
                     b.Property<string>("CountryName")
-                        .HasColumnType("NVARCHAR(150)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id", "CountryId", "LangCode");
 

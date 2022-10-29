@@ -10,6 +10,7 @@ namespace AngularMultiLanguage.Entities
         public string LangCode { get; set; } = null!;
         [ForeignKey(nameof(LangCode))]
         public virtual TblAppLangMaster TblAppLangMaster { get; set; } = null!;
+        [Column(TypeName ="NVARCHAR(150)")]
         public string? CountryName { get; set; }
     }
 }
